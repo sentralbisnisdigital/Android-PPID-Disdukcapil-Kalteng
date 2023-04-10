@@ -1,13 +1,16 @@
-package disdukcapil.kalteng.ppid
+package disdukcapil.kalteng.ppid.adapters
 
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import disdukcapil.kalteng.ppid.utils.IClick
+import disdukcapil.kalteng.ppid.models.Menu
 import disdukcapil.kalteng.ppid.databinding.ItemMenuBinding
 
-class MenuAdapter(private val itemList : ArrayList<Menu>,private val listener: IClick) : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
+class MenuAdapter(private val itemList : ArrayList<Menu>, private val listener: IClick) : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
     class ViewHolder(val binding : ItemMenuBinding) :RecyclerView.ViewHolder(binding.root)
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,6 +24,7 @@ class MenuAdapter(private val itemList : ArrayList<Menu>,private val listener: I
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder){
             with(itemList[position]){
+                this.icon?.let { binding.imageView.setImageResource(it) }
                 binding.textTitle.text = this.title
                 binding.root.setOnClickListener {
                     listener.onClick(this, position, binding)
@@ -29,5 +33,7 @@ class MenuAdapter(private val itemList : ArrayList<Menu>,private val listener: I
         }
     }
     fun addAll(it : List<Menu>) = itemList.addAll(it)
+
+    fun removeItemInLastPosition() = itemList.removeAt(itemList.size - 1)
 
 }

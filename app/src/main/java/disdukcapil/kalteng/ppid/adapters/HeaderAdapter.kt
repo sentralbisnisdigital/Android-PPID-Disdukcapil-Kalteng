@@ -1,11 +1,10 @@
-package disdukcapil.kalteng.ppid
+package disdukcapil.kalteng.ppid.adapters
 
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import disdukcapil.kalteng.ppid.databinding.ItemHeaderBinding
-import disdukcapil.kalteng.ppid.databinding.ItemMenuBinding
 
 class HeaderAdapter(private val itemList : ArrayList<String>) : RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
     class ViewHolder(val binding : ItemHeaderBinding) :RecyclerView.ViewHolder(binding.root)

@@ -12,5 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="cardBackgroundColor">@color/purple_500</item>
+        <item name="fontFamily">@font/san_fransisco_regular</item>
     </style>
 </resources>

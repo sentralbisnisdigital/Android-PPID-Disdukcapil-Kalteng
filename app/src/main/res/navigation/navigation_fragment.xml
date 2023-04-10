@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="disdukcapil.kalteng.ppid.MainFragment"
-        android:label="MainFragment">
+        android:name="disdukcapil.kalteng.ppid.views.fragments.MainFragment"
+        android:label="@string/app_name">
         <action
             android:id="@+id/action_mainFragment_to_webFragment"
             app:destination="@id/webFragment" />
     </fragment>
     <fragment
         android:id="@+id/webFragment"
-        android:name="disdukcapil.kalteng.ppid.WebFragment"
+        android:name="disdukcapil.kalteng.ppid.views.fragments.WebFragment"
         android:label="fragment_web"
         tools:layout="@layout/fragment_web">
         <argument
             android:name="menu"
-            app:argType="disdukcapil.kalteng.ppid.Menu" />
+            app:argType="disdukcapil.kalteng.ppid.models.Menu" />
     </fragment>
 </navigation>
