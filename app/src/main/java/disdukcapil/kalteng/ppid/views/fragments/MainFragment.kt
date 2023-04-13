@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import disdukcapil.kalteng.ppid.utils.IClick
 import disdukcapil.kalteng.ppid.models.Menu
@@ -85,6 +86,7 @@ class MainFragment : Fragment(), IClick {
             val navController = findNavController()
             val action = MainFragmentDirections.actionMainFragmentToWebFragment(menu)
             navController.navigate(action)
+            Animatoo.animateFade(this.requireContext())
         }
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import disdukcapil.kalteng.ppid.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
@@ -16,6 +17,7 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
             val intent = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(intent)
+            Animatoo.animateZoom(this)
             finish()
         }, 1000)
 
