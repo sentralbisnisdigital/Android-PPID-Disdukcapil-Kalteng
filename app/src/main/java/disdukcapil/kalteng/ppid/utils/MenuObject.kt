@@ -5,75 +5,49 @@ import disdukcapil.kalteng.ppid.models.Menu
 import disdukcapil.kalteng.ppid.R
 
 object MenuObject {
+    private const val URL = "https://disdukcapil.ferys2195.masuk.id/ppid"
+    private fun url(path : String) = URL + path
     fun item(): ArrayList<Menu> {
         return arrayListOf(
             Menu(
                 icon = R.drawable.law,
                 title = "Dasar Hukum",
-                url = "https://ferys2195.github.io",
-                subtitle = "lorem",
-                destination = null
-            ),
-            Menu(
-                icon = R.drawable.proposal,
-                title = "Daftar Informasi Publik",
-                url = "https://laravel.com",
+                url = url("/dasar-hukum"),
                 subtitle = "lorem",
                 destination = null
             ),
             Menu(
 
                 title = "Visi Misi",
-                url = "https://astro.build",
+                url = url("/visi-misi"),
                 subtitle = "lorem",
                 destination = null
             ),
             Menu(
 
                 title = "Struktur Organisasi",
-                url = "https://nextjs.org",
+                url = url("/struktur-organisasi"),
                 subtitle = "lorem",
                 destination = null
             ),
             Menu(
 
                 title = "Tugas dan Fungsi",
-                url = "https://github.com",
+                url = url("/tupoksi"),
                 subtitle = "lorem",
                 destination = null
             ),
             Menu(
 
                 title = "Maklumat Pelayanan",
-                url = "https://astro.build",
+                url = url("/maklumat-pelayanan"),
                 subtitle = "lorem",
                 destination = null
             ),
             Menu(
-
+                icon = R.drawable.proposal,
                 title = "Standar Operasional Prosedur",
-                url = "https://nextjs.org",
-                subtitle = "lorem",
-                destination = null
-            ),
-            Menu(
-
-                title = "Laporan",
-                url = "https://github.com",
-                subtitle = "lorem",
-                destination = null
-            ),
-            Menu(
-
-                title = "Biaya",
-                url = "https://astro.build",
-                subtitle = "lorem",
-                destination = null
-            ),
-            Menu(
-
-                title = "Layanan Informasi",
-                url = "https://nextjs.org",
+                url = url("/sop"),
                 subtitle = "lorem",
                 destination = null
             ),
@@ -86,12 +60,18 @@ object MenuObject {
             ),
             Menu(
 
-                title = "Formulir Layanan",
+                title = "Tata Cara",
                 url = "https://astro.build",
                 subtitle = "lorem",
                 destination = null
-            )
+            ),
+            Menu(
 
+                title = "Formulir Layanan",
+                url = "https://nextjs.org",
+                subtitle = "lorem",
+                destination = null
+            ),
         )
     }
 
@@ -100,7 +80,7 @@ object MenuObject {
             Menu(
                 icon = R.drawable.law,
                 title = "Permintaan Informasi",
-                url = "https://ferys2195.github.io",
+                url = "https://disdukcapil.ferys2195.masuk.id/formulir/permohonan",
                 subtitle = "lorem",
                 destination = null
             ),
@@ -114,7 +94,7 @@ object MenuObject {
             Menu(
 
                 title = "Keberatan Atas Informasi",
-                url = "https://astro.build",
+                url = "https://disdukcapil.ferys2195.masuk.id/formulir/keberatan",
                 subtitle = "lorem",
                 destination = null
             ),
