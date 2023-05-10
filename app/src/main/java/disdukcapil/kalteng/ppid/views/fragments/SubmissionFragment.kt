@@ -64,6 +64,7 @@ class SubmissionFragment : BottomSheetDialogFragment(), IClick {
     }
 
     override fun onClick(menu: Menu, position: Int, view: ItemMenuBinding) {
+        dismiss() // close this fragment
         val navController = findNavController()
         val action = MainFragmentDirections.actionMainFragmentToWebFragment(menu)
         navController.navigate(action)
