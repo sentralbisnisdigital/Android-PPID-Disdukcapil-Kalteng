@@ -53,7 +53,7 @@ class MainFragment : Fragment(), IClick {
         adapter = ConcatAdapter(headerAdapter, menuAdapter)
         binding.recyclerView.adapter = menuAdapter
         binding.recyclerView.layoutManager = GridLayoutManager(
-            this@MainFragment.context, 4
+            this@MainFragment.context, 3
         )
     }
 
