@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import disdukcapil.kalteng.ppid.MainActivity
 import disdukcapil.kalteng.ppid.adapters.MenuAdapter
 import disdukcapil.kalteng.ppid.databinding.FragmentSubmissionBinding
 import disdukcapil.kalteng.ppid.databinding.ItemMenuBinding
@@ -16,11 +16,11 @@ import disdukcapil.kalteng.ppid.utils.IClick
 import disdukcapil.kalteng.ppid.utils.MenuObject
 
 
-class SubmissionFragment : BottomSheetDialogFragment(), IClick {
+class SubmissionFragment(private val menu: ArrayList<Menu>? = null, private val title: String? = null) : BottomSheetDialogFragment(), IClick {
 
     companion object {
-        fun newInstance(): SubmissionFragment {
-            return SubmissionFragment()
+        fun newInstance(menu: ArrayList<Menu>? = null, title: String? = null): SubmissionFragment {
+            return SubmissionFragment(menu, title)
         }
         const val TAG = "ActionBottomDialog"
     }
@@ -33,8 +33,8 @@ class SubmissionFragment : BottomSheetDialogFragment(), IClick {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentSubmissionBinding.inflate(inflater, container, false)
+        binding.textTitle.text = title ?: "Ajukan Permohonan / Keberatan"
         return binding.root
     }
 
@@ -58,8 +58,8 @@ class SubmissionFragment : BottomSheetDialogFragment(), IClick {
     }
 
     private fun setupObserver() {
-
-        renderList(MenuObject.submissionItemMenu())
+        val item = menu ?: MenuObject.subMenu()
+        renderList(item)
 
     }
 

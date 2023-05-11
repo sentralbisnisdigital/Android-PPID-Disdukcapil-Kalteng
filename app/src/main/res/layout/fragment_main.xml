@@ -45,6 +45,7 @@
                             android:layout_height="wrap_content"
                             android:padding="8dp"
                             android:src="@drawable/logo_kalteng"
+                            android:contentDescription="@string/app_name"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -62,16 +63,16 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Pejabat Pengelola Informasi dan Data (PPID)"
+                                android:text="@string/title_header"
                                 android:textColor="?attr/colorPrimaryDark"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="#333"
-                                android:text="Dinas Kependudukan dan Pencatatan Sipil Provinsi Kalimantan Tengah" />
+                                android:text="@string/title_agency" />
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -95,7 +96,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Permohonan/Keberatan"
+                    android:text="@string/title_permohonan_keberatan"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/button"
@@ -106,7 +107,7 @@
                     android:id="@+id/button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ajukan"
+                    android:text="@string/title_ajukan"
                     android:textAllCaps="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

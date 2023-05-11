@@ -75,19 +75,25 @@ class MainFragment : Fragment(), IClick {
     }
 
     override fun onClick(menu: Menu, position: Int, view: ItemMenuBinding) {
-        if (menu.url == null) {
+        if (menu.url == null && menu.subMenu == null) {
             val bottomDialogFragment =
                 menu.destination?.newInstance() as BottomSheetDialogFragment
             bottomDialogFragment.show(
                 parentFragmentManager,
                 AllMenuFragment.TAG
             )
-        } else {
-            val navController = findNavController()
-            val action = MainFragmentDirections.actionMainFragmentToWebFragment(menu)
-            navController.navigate(action)
-            Animatoo.animateFade(this.requireContext())
-        }
+        } else if (menu.url == null) {
+                val submissionFragment = SubmissionFragment.newInstance(menu.subMenu, menu.title)
+                submissionFragment.show(
+                    parentFragmentManager,
+                    SubmissionFragment.TAG
+                )
+            } else {
+                val navController = findNavController()
+                val action = MainFragmentDirections.actionMainFragmentToWebFragment(menu)
+                navController.navigate(action)
+                Animatoo.animateFade(this.requireContext())
+            }
     }
 }
 

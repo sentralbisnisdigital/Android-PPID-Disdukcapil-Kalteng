@@ -2,4 +2,8 @@
     <string name="app_name">PPID Disdukcapil Prov. Kalteng</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_header">Pejabat Pengelola Informasi dan Dokumentasi (PPID)</string>
+    <string name="title_agency">Dinas Kependudukan dan Pencatatan Sipil Provinsi Kalimantan Tengah</string>
+    <string name="title_permohonan_keberatan">Permohonan/Keberatan</string>
+    <string name="title_ajukan">Ajukan</string>
 </resources>

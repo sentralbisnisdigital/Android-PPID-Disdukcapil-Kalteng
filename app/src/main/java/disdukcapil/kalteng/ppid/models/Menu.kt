@@ -6,9 +6,10 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Menu(
-    val icon: Int? = R.drawable.law,
+    val icon: Int?,
     val title: String?,
     val subtitle: String?,
     val url: String?,
+    val subMenu: ArrayList<Menu>?,
     val destination: Class<*>?
 ): Parcelable
