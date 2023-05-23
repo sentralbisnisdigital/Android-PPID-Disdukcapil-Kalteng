@@ -16,10 +16,12 @@
     <fragment
         android:id="@+id/webFragment"
         android:name="disdukcapil.kalteng.ppid.views.fragments.WebFragment"
-        android:label="fragment_web"
+        android:label="Detail"
         tools:layout="@layout/fragment_web">
         <argument
             android:name="menu"
+            app:nullable="true"
             app:argType="disdukcapil.kalteng.ppid.models.Menu" />
+        <deepLink app:uri="https://disdukcapil.ferys2195.masuk.id/{myarg}" />
     </fragment>
 </navigation>
