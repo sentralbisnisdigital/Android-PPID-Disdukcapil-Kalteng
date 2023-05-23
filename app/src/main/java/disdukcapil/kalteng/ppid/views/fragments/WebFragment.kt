@@ -3,10 +3,13 @@ package disdukcapil.kalteng.ppid.views.fragments
 import android.Manifest
 import android.app.Activity
 import android.app.Activity.RESULT_OK
+import android.app.DownloadManager
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +21,9 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import disdukcapil.kalteng.ppid.databinding.FragmentWebBinding
 import disdukcapil.kalteng.ppid.models.Menu
 
@@ -39,7 +44,6 @@ class WebFragment : Fragment() {
         menu = arguments?.let { WebFragmentArgs.fromBundle(it).menu }
 
         (activity as AppCompatActivity?)!!.supportActionBar!!.title = menu?.title
-
         menu?.url?.let {
             binding.webView.settings.javaScriptEnabled = true
             binding.webView.webViewClient = WebClient()
@@ -54,6 +58,10 @@ class WebFragment : Fragment() {
         // Load the URL
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             view.loadUrl(url)
+            if (url.contains("/download")) {
+                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 102)
+                downloadFile(url)
+            }
             return false
         }
 
@@ -63,6 +71,14 @@ class WebFragment : Fragment() {
             binding.webView.visibility = View.VISIBLE
             binding.animationView.visibility = View.GONE
         }
+    }
+
+    private fun downloadFile(url: String) {
+        val manager = activity?.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager?
+        val uri = Uri.parse(url)
+        val request = DownloadManager.Request(uri)
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+        manager!!.enqueue(request)
     }
 
     inner class ChromeClient : WebChromeClient() {
@@ -83,7 +99,7 @@ class WebFragment : Fragment() {
 
     private val REQUEST_PERMISSION = 101
     private var filePath: ValueCallback<Array<Uri>>? = null
-    private fun checkPermission(){
+    private fun checkPermission() {
         when {
             !isPermissionGranted() -> {
                 requestPermissions(
@@ -99,12 +115,14 @@ class WebFragment : Fragment() {
             }
         }
     }
+
     private fun isPermissionGranted(): Boolean {
         return ContextCompat.checkSelfPermission(
             requireContext(),
             Manifest.permission.READ_EXTERNAL_STORAGE
         ) == PackageManager.PERMISSION_GRANTED
     }
+
     private fun openFileChooser() {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"
@@ -116,12 +134,14 @@ class WebFragment : Fragment() {
 
 
     private val getFile = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()) {
+        ActivityResultContracts.StartActivityForResult()
+    ) {
         if (it.resultCode == Activity.RESULT_CANCELED) {
             filePath?.onReceiveValue(null)
         } else if (it.resultCode == RESULT_OK && filePath != null) {
             filePath!!.onReceiveValue(
-                WebChromeClient.FileChooserParams.parseResult(it.resultCode, it.data))
+                WebChromeClient.FileChooserParams.parseResult(it.resultCode, it.data)
+            )
             filePath = null
         }
     }
@@ -131,7 +151,24 @@ class WebFragment : Fragment() {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        if (requestCode == REQUEST_PERMISSION) {
+        when (requestCode) {
+            REQUEST_PERMISSION -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    openFileChooser()
+                } else {
+                    Toast.makeText(this@WebFragment.context, "Akses ditolak", Toast.LENGTH_SHORT)
+                        .show()
+                    activity?.onBackPressedDispatcher?.onBackPressed()
+                }
+            }
+            102 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this@WebFragment.context, "Akses ditolak", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        }
+        /*if (requestCode == REQUEST_PERMISSION) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 openFileChooser()
             } else {
@@ -139,6 +176,11 @@ class WebFragment : Fragment() {
                 activity?.onBackPressedDispatcher?.onBackPressed()
             }
         }
+        if(requestCode == 102){
+            if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this@WebFragment.context, "Akses ditolak", Toast.LENGTH_SHORT).show()
+            }
+        }*/
     }
 
 }
