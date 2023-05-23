@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
@@ -31,6 +32,9 @@ class MainFragment : Fragment(), IClick {
     ): View? {
 
         _binding = FragmentMainBinding.inflate(inflater, container, false)
+
+        hideToolbar()
+
         binding.button.setOnClickListener {
             val submissionFragment = SubmissionFragment.newInstance()
             submissionFragment.show(
@@ -39,6 +43,15 @@ class MainFragment : Fragment(), IClick {
             )
         }
         return binding.root
+    }
+
+    private fun hideToolbar(isHidden : Boolean = true){
+        val activity = requireActivity() as AppCompatActivity
+        val actionBar = activity.supportActionBar
+        when(isHidden) {
+            true -> actionBar?.hide()
+            false -> actionBar?.show()
+        }
     }
 
     override fun onResume() {
@@ -94,6 +107,14 @@ class MainFragment : Fragment(), IClick {
                 navController.navigate(action)
                 Animatoo.animateFade(this.requireContext())
             }
+    }
+
+    /*
+    * Tampilkan kembali toolbar saat fragment ini tidak aktif
+    */
+    override fun onDestroyView() {
+        super.onDestroyView()
+        hideToolbar(false)
     }
 }
 
