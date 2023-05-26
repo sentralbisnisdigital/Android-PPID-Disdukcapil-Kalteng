@@ -40,8 +40,8 @@
                 <!-- on below line we are specifying the host name and
                     the scheme type from which we will be calling our app -->
                 <data
-                    android:host="disdukcapil.ferys2195.masuk.id"
-                    android:scheme="https" />
+                    android:host="@string/host"
+                    android:scheme="@string/scheme" />
             </intent-filter>
         </activity>
     </application>
