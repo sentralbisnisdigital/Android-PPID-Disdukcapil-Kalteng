@@ -34,17 +34,31 @@ class MainFragment : Fragment(), IClick {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
 
         hideToolbar()
+        showServices()
+        showTracking()
 
-        binding.button.setOnClickListener {
+        return binding.root
+    }
+
+    private fun showServices(){
+        binding.btnShowServices.setOnClickListener {
             val submissionFragment = SubmissionFragment.newInstance()
             submissionFragment.show(
                 parentFragmentManager,
                 SubmissionFragment.TAG
             )
         }
-        return binding.root
     }
 
+    private fun showTracking(){
+        binding.btnTracking.setOnClickListener {
+            val trackingFragment = TrackingFragment.newInstance()
+            trackingFragment.show(
+                parentFragmentManager,
+                SubmissionFragment.TAG
+            )
+        }
+    }
     private fun hideToolbar(isHidden : Boolean = true){
         val activity = requireActivity() as AppCompatActivity
         val actionBar = activity.supportActionBar
