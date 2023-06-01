@@ -45,6 +45,7 @@ class TrackingAdapter(private val itemList : ArrayList<Tracking>, private val li
         }
     }
     fun addAll(it : List<Tracking>) {
+        itemList.clear()
         itemList.addAll(it)
     }
     fun getItemList() = itemList
