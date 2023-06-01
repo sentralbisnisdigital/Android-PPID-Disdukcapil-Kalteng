@@ -1,29 +1,24 @@
 package disdukcapil.kalteng.ppid
 
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.NavDeepLinkBuilder
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import disdukcapil.kalteng.ppid.databinding.ActivityMainBinding
 import disdukcapil.kalteng.ppid.models.Menu
+import disdukcapil.kalteng.ppid.models.Tracking
+import disdukcapil.kalteng.ppid.viewmodels.TrackingViewModel
 import disdukcapil.kalteng.ppid.views.fragments.MainFragmentDirections
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
     private var navController : NavController? = null
-
-
+    private val trackingViewModel: TrackingViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
@@ -41,7 +36,12 @@ class MainActivity : AppCompatActivity() {
         val data: Uri? = intent?.data
 
         if (data != null) {
-            val menu = Menu(title = null, url = data.toString(), subMenu = null, icon = null, destination = null, subtitle = null)
+            // Insert to database
+            val code : String = data.pathSegments.last()
+            val type : String = data.pathSegments[data.pathSegments.size - 1]
+            trackingViewModel.insert(Tracking(null,trackingCode = code, trackingType = type, createdAt = "2020-05-01 00:00:00"))
+            // show into web fragment
+            val menu = Menu(url = data.toString())
             val action = MainFragmentDirections.actionMainFragmentToWebFragment(menu)
             navController!!.navigate(action)
             Animatoo.animateFade(this)
