@@ -1,12 +1,10 @@
 package disdukcapil.kalteng.ppid.views.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -107,9 +105,6 @@ class TrackingFragment : BottomSheetDialogFragment(),
     }
 
     override fun onItemDeleted(item: Tracking, position: Int) {
-
-        item.let {
-//            trackingViewModel.deleteItem(it)
-        }
+        trackingViewModel.deleteItem(item)
     }
 }
