@@ -8,9 +8,9 @@ import disdukcapil.kalteng.ppid.utils.IClick
 import disdukcapil.kalteng.ppid.models.Menu
 import disdukcapil.kalteng.ppid.databinding.ItemMenuBinding
 
-class MenuAdapter(private val itemList : ArrayList<Menu>, private val listener: IClick) : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
-    class ViewHolder(val binding : ItemMenuBinding) :RecyclerView.ViewHolder(binding.root)
-
+class MenuAdapter(private val itemList: ArrayList<Menu>, private val listener: IClick) :
+    RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
+    class ViewHolder(val binding: ItemMenuBinding) : RecyclerView.ViewHolder(binding.root)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,8 +22,8 @@ class MenuAdapter(private val itemList : ArrayList<Menu>, private val listener: 
     override fun getItemCount() = itemList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        with(holder){
-            with(itemList[position]){
+        with(holder) {
+            with(itemList[position]) {
                 this.icon?.let { binding.imageView.setImageResource(it) }
                 binding.textTitle.text = this.title
                 binding.root.setOnClickListener {
@@ -32,7 +32,7 @@ class MenuAdapter(private val itemList : ArrayList<Menu>, private val listener: 
             }
         }
     }
-    fun addAll(it : List<Menu>) = itemList.addAll(it)
+    fun addAll(it: List<Menu>) = itemList.addAll(it)
 
     fun removeItemInLastPosition() = itemList.removeAt(itemList.size - 1)
 

@@ -5,14 +5,12 @@ import disdukcapil.kalteng.ppid.models.Menu
 import disdukcapil.kalteng.ppid.R
 
 object MenuObject {
-    private const val URL = "https://disdukcapil.ferys2195.masuk.id"
-    private fun url(path: String, prefix: String = "/ppid") = URL + prefix + path
     fun item(): ArrayList<Menu> {
         return arrayListOf(
             Menu(
                 icon = R.drawable.legal_document,
                 title = "Dasar Hukum",
-                url = url("/dasar-hukum"),
+                url = Env.url("/dasar-hukum"),
                 subMenu = null,
                 subtitle = "lorem",
                 destination = null
@@ -20,7 +18,7 @@ object MenuObject {
             Menu(
                 icon = R.drawable.purpose,
                 title = "Visi Misi",
-                url = url("/visi-misi"),
+                url = Env.url("/visi-misi"),
                 subtitle = "lorem",
                 subMenu = null,
                 destination = null
@@ -28,7 +26,7 @@ object MenuObject {
             Menu(
                 icon = R.drawable.organization_chart,
                 title = "Struktur Organisasi",
-                url = url("/struktur-organisasi"),
+                url = Env.url("/struktur-organisasi"),
                 subtitle = "lorem",
                 subMenu = null,
                 destination = null
@@ -36,7 +34,7 @@ object MenuObject {
             Menu(
                 icon = R.drawable.prioritize,
                 title = "Tugas dan Fungsi",
-                url = url("/tupoksi"),
+                url = Env.url("/tupoksi"),
                 subMenu = null,
                 subtitle = "lorem",
                 destination = null
@@ -44,7 +42,7 @@ object MenuObject {
             Menu(
                 icon = R.drawable.advertisement,
                 title = "Maklumat Pelayanan",
-                url = url("/maklumat-pelayanan"),
+                url = Env.url("/maklumat-pelayanan"),
                 subMenu = null,
                 subtitle = "lorem",
                 destination = null
@@ -52,7 +50,7 @@ object MenuObject {
             Menu(
                 icon = R.drawable.sop,
                 title = "Standar Operasional Prosedur",
-                url = url("/sop"),
+                url = Env.url("/sop"),
                 subtitle = "lorem",
                 subMenu = null,
                 destination = null
@@ -64,10 +62,10 @@ object MenuObject {
                 subtitle = "lorem",
                 destination = null,
                 subMenu = subMenu(
-                    permintaanInformasi = url("/permintaan-informasi", "/ppid/alur"),
-                    keberatan = url("/keberatan", "/ppid/alur"),
-                    penyelesaianSengketa = url("/penyelesaian-sengketa", "/ppid/alur"),
-                    pengaduan = url("/pengaduan", "/ppid/alur")
+                    permintaanInformasi = Env.url("/permintaan-informasi", "/ppid/alur"),
+                    keberatan = Env.url("/keberatan", "/ppid/alur"),
+                    penyelesaianSengketa = Env.url("/penyelesaian-sengketa", "/ppid/alur"),
+                    pengaduan = Env.url("/pengaduan", "/ppid/alur")
                 )
             ),
             Menu(
@@ -77,10 +75,10 @@ object MenuObject {
                 subtitle = "lorem",
                 destination = null,
                 subMenu = subMenu(
-                    permintaanInformasi = url("/permintaan-informasi", "/ppid/tata-cara"),
-                    keberatan = url("/keberatan", "/ppid/tata-cara"),
-                    penyelesaianSengketa = url("/penyelesaian-sengketa", "/ppid/tata-cara"),
-                    pengaduan = url("/pengaduan", "/ppid/tata-cara")
+                    permintaanInformasi = Env.url("/permintaan-informasi", "/ppid/tata-cara"),
+                    keberatan = Env.url("/keberatan", "/ppid/tata-cara"),
+                    penyelesaianSengketa = Env.url("/penyelesaian-sengketa", "/ppid/tata-cara"),
+                    pengaduan = Env.url("/pengaduan", "/ppid/tata-cara")
                 )
             ),
             Menu(
@@ -90,20 +88,20 @@ object MenuObject {
                 subtitle = "lorem",
                 destination = null,
                 subMenu = subMenu(
-                    permintaanInformasi = url("/permintaan-informasi", "/ppid/formulir-layanan"),
-                    keberatan = url("/keberatan", "/ppid/formulir-layanan"),
-                    penyelesaianSengketa = url("/penyelesaian-sengketa", "/ppid/formulir-layanan"),
-                    pengaduan = url("/pengaduan", "/ppid/formulir-layanan")
+                    permintaanInformasi = Env.url("/permintaan-informasi", "/ppid/formulir-layanan"),
+                    keberatan = Env.url("/keberatan", "/ppid/formulir-layanan"),
+                    penyelesaianSengketa = Env.url("/penyelesaian-sengketa", "/ppid/formulir-layanan"),
+                    pengaduan = Env.url("/pengaduan", "/ppid/formulir-layanan")
                 )
             ),
         )
     }
 
     fun subMenu(
-        permintaanInformasi: String = url("/permohonan", "/formulir"),
-        pengaduan: String = url("/pengaduan", "/formulir"),
-        keberatan: String = url("/keberatan", "/formulir"),
-        penyelesaianSengketa: String = url("/penyelesaian-sengketa", "/formulir")
+        permintaanInformasi: String = Env.url("/permohonan", "/formulir"),
+        pengaduan: String = Env.url("/pengaduan", "/formulir"),
+        keberatan: String = Env.url("/keberatan", "/formulir"),
+        penyelesaianSengketa: String = Env.url("/penyelesaian-sengketa", "/formulir")
     ): ArrayList<Menu> {
         return arrayListOf(
             Menu(

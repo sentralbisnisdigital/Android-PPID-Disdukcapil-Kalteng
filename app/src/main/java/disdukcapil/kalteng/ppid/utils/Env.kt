@@ -1,10 +1,24 @@
 package disdukcapil.kalteng.ppid.utils
 
+import android.content.Context
 import android.net.Uri
 import disdukcapil.kalteng.ppid.R
 
 object Env {
-    private val uri = Uri.Builder()
-    private val BASE_URL = uri.scheme(R.string.scheme.toString()).path(R.string.host.toString()).toString()
-    fun url(endpoint: String, prefix: String = "/ppid") = BASE_URL + prefix + endpoint
+    private lateinit var applicationContext: Context
+
+    fun initialize(context: Context) {
+        applicationContext = context.applicationContext
+    }
+
+    fun url(endpoint: String, prefix: String = "/ppid"): String {
+        val paths = listOf(prefix, endpoint)
+        val uri = Uri.Builder()
+            .scheme(applicationContext.getString(R.string.scheme))
+            .authority(applicationContext.getString(R.string.host))
+        for (path in paths) {
+            uri.appendEncodedPath(path)
+        }
+        return uri.build().toString().replace("(?<!https:)//+".toRegex(), "/")
+    }
 }
