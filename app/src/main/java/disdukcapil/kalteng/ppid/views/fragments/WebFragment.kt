@@ -1,6 +1,7 @@
 package disdukcapil.kalteng.ppid.views.fragments
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.app.DownloadManager
@@ -9,21 +10,15 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.PermissionRequest
-import android.webkit.ValueCallback
-import android.webkit.WebChromeClient
-import android.webkit.WebView
+import android.webkit.*
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
 import disdukcapil.kalteng.ppid.databinding.FragmentWebBinding
 import disdukcapil.kalteng.ppid.models.Menu
 
@@ -32,12 +27,18 @@ class WebFragment : Fragment() {
     private var _binding: FragmentWebBinding? = null
     private val binding get() = _binding!!
     private var menu: Menu? = null
+    private var isError = false
+    private var filePath: ValueCallback<Array<Uri>>? = null
 
+    companion object{
+        private const val REQUEST_PERMISSION = 101
+    }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentWebBinding.inflate(layoutInflater, container, false)
         val view = binding.root
@@ -49,11 +50,17 @@ class WebFragment : Fragment() {
             binding.webView.webViewClient = WebClient()
             binding.webView.webChromeClient = ChromeClient()
             binding.webView.loadUrl(it)
+            binding.btnReload.setOnClickListener { _ ->
+                binding.animationView.visibility = View.VISIBLE
+                binding.webView.loadUrl(it)
+                isError = false
+            }
         }
+
         return view
     }
 
-    inner class WebClient : android.webkit.WebViewClient() {
+    inner class WebClient : WebViewClient() {
 
         // Load the URL
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
@@ -68,8 +75,26 @@ class WebFragment : Fragment() {
         // ProgressBar will disappear once page is loaded
         override fun onPageFinished(view: WebView, url: String) {
             super.onPageFinished(view, url)
-            binding.webView.visibility = View.VISIBLE
+            if(!isError){
+                if(view.progress == 100){
+                    binding.layoutError.visibility = View.GONE
+                    binding.webView.visibility = View.VISIBLE
+                    binding.animationView.visibility = View.GONE
+                }
+            }
+
+        }
+
+        override fun onReceivedError(
+            view: WebView?,
+            request: WebResourceRequest?,
+            error: WebResourceError?
+        ) {
+            super.onReceivedError(view, request, error)
+            binding.layoutError.visibility = View.VISIBLE
+            binding.webView.visibility = View.GONE
             binding.animationView.visibility = View.GONE
+            isError = true
         }
     }
 
@@ -97,8 +122,6 @@ class WebFragment : Fragment() {
         }
     }
 
-    private val REQUEST_PERMISSION = 101
-    private var filePath: ValueCallback<Array<Uri>>? = null
     private fun checkPermission() {
         when {
             !isPermissionGranted() -> {
@@ -168,19 +191,6 @@ class WebFragment : Fragment() {
                 }
             }
         }
-        /*if (requestCode == REQUEST_PERMISSION) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                openFileChooser()
-            } else {
-                Toast.makeText(this@WebFragment.context, "Akses ditolak", Toast.LENGTH_SHORT).show()
-                activity?.onBackPressedDispatcher?.onBackPressed()
-            }
-        }
-        if(requestCode == 102){
-            if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this@WebFragment.context, "Akses ditolak", Toast.LENGTH_SHORT).show()
-            }
-        }*/
     }
 
 }
