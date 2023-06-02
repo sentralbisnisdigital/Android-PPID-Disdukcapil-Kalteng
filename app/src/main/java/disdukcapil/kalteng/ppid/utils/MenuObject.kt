@@ -1,7 +1,7 @@
 package disdukcapil.kalteng.ppid.utils
 
-import disdukcapil.kalteng.ppid.views.fragments.AllMenuFragment
-import disdukcapil.kalteng.ppid.models.Menu
+import disdukcapil.kalteng.ppid.ui.views.fragments.AllMenuFragment
+import disdukcapil.kalteng.ppid.data.models.Menu
 import disdukcapil.kalteng.ppid.R
 
 object MenuObject {
