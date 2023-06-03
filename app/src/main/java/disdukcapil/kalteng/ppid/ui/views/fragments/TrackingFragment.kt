@@ -1,6 +1,10 @@
 package disdukcapil.kalteng.ppid.ui.views.fragments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.InputFilter
+import android.text.TextWatcher
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +51,7 @@ class TrackingFragment : BottomSheetDialogFragment(),
         adapter = TrackingAdapter(arrayListOf(), this)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
-
+        binding.textInputTracking.filters = arrayOf(InputFilter.AllCaps())
     }
 
     private fun setupObserver() {
@@ -91,6 +95,7 @@ class TrackingFragment : BottomSheetDialogFragment(),
             }
             false
         }
+
     }
 
     private fun showTrackingIntoWebFragment(menu: Menu) {

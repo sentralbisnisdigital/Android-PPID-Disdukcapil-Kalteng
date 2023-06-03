@@ -42,6 +42,8 @@
                android:id="@+id/text_input_tracking"
                android:imeOptions="actionSearch"
                android:inputType="text"
+               android:textAllCaps="true"
+               android:maxLength="11"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                />
