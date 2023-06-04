@@ -84,7 +84,7 @@ class TrackingFragment : BottomSheetDialogFragment(),
                     )
                     trackingViewModel.insert(track)
                     val menu = Menu(
-                        url = Env.url(tracking, "/ppid/public-information/")
+                        url = Env.url(tracking, "/ppid/tracking/")
                     )
                     showTrackingIntoWebFragment(menu)
                 } else {
@@ -106,7 +106,7 @@ class TrackingFragment : BottomSheetDialogFragment(),
     }
 
     override fun onClick(item: Tracking, position: Int, view: ItemTrackingHistoryBinding) {
-        val menu = Menu(url = Env.url(item.trackingCode.toString(), "/ppid/public-information/"))
+        val menu = Menu(url = Env.url(item.trackingCode.toString(), "/ppid/tracking/"))
         showTrackingIntoWebFragment(menu)
     }
 

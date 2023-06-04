@@ -10,4 +10,7 @@
     <color name="amber_a400">#FFC400</color>
     <color name="indigo_a400">#3D5AFE</color>
     <color name="indigo_900">#1A237E</color>
+
+    <color name="bg_light">#F4F5FB</color>
+    <color name="bg_dark">#1C1C1C</color>
 </resources>
