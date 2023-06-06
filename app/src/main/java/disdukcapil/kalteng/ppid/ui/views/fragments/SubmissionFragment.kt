@@ -59,7 +59,7 @@ class SubmissionFragment(private val menu: ArrayList<Menu>? = null, private val 
     }
 
     private fun setupObserver() {
-        val item = menu ?: MenuObject.subMenu()
+        val item = menu ?: listOf(MenuObject.subMenu()[0], MenuObject.subMenu()[2])
         renderList(item)
 
     }

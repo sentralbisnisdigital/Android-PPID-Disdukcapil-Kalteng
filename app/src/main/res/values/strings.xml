@@ -9,4 +9,5 @@
     <string name="scheme">https</string>
     <string name="title_app">e-PPID</string>
     <string name="btn_text_reload">Muat Ulang</string>
+    <string name="btn_select_service">Pilih Layanan</string>
 </resources>
