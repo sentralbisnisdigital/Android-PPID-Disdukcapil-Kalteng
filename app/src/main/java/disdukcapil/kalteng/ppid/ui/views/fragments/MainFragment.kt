@@ -92,8 +92,8 @@ class MainFragment : Fragment(), IClick {
 
     private fun setupObserver() {
         val menuItem = MenuObject.item()
-        if (menuItem.size > 12) {
-            menuItem.subList(11, menuItem.size).clear()
+        if (menuItem.size > 9) {
+            menuItem.subList(8, menuItem.size).clear()
             menuItem.add(MenuObject.addAppsButton)
         }
         renderList(menuItem)
