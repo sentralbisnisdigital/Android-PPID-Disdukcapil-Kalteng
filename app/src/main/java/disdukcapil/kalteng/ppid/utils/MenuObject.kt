@@ -96,7 +96,7 @@ object MenuObject {
             ),
 
             Menu(
-                icon = R.drawable.contact_form,
+                icon = R.drawable.indonesian_rupiah,
                 title = "Tarif / Biaya",
                 url = Env.url("/biaya"),
                 subtitle = "lorem",
