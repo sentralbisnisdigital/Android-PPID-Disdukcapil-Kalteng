@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
         supportActionBar?.hide()
         WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = false
-        window.statusBarColor = this.resources.getColor(R.color.white)
+        window.statusBarColor = this.resources.getColor(R.color.bg_light)
         Handler().postDelayed({
             val intent = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(intent)
