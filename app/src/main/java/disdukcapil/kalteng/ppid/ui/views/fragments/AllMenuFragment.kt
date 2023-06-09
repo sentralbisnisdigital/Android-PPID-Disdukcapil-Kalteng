@@ -1,6 +1,7 @@
 package disdukcapil.kalteng.ppid.ui.views.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,17 +56,16 @@ class AllMenuFragment : BottomSheetDialogFragment(), IClick {
 
     private fun renderList(it: List<Menu>) {
         menuAdapter.addAll(it)
-        menuAdapter.removeItemInLastPosition()
         menuAdapter.notifyDataSetChanged()
     }
 
     private fun setupObserver() {
-
         renderList(MenuObject.item())
 
     }
 
     override fun onClick(menu: Menu, position: Int, view: ItemMenuBinding) {
+        dismiss() // close this fragment
         val navController = findNavController()
         val action = MainFragmentDirections.actionMainFragmentToWebFragment(menu)
         navController.navigate(action)
