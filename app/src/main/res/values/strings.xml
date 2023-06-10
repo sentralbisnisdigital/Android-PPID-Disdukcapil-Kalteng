@@ -11,4 +11,9 @@
     <string name="title_app">e-PPID</string>
     <string name="btn_text_reload">Muat Ulang</string>
     <string name="btn_select_service">Pilih Layanan</string>
+    <string name="btn_text_tracking">Tracking</string>
+    <string name="text_more_apps">Lainnya</string>
+    <string name="text_error_input_tracking">Silahkan Inputan Terlebih dahulu nomor tracking</string>
+    <string name="title_tracking_number">Nomor Tracking</string>
+    <string name="title_tracking_header">Silahkan Masukan Nomor Tracking</string>
 </resources>

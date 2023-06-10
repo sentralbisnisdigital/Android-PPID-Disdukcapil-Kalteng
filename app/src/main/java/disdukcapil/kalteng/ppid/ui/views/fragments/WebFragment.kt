@@ -19,11 +19,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import disdukcapil.kalteng.ppid.databinding.FragmentWebBinding
 import disdukcapil.kalteng.ppid.data.models.Menu
-import disdukcapil.kalteng.ppid.ui.views.fragments.WebFragmentArgs
+import disdukcapil.kalteng.ppid.databinding.FragmentWebBinding
 
 
+@Suppress("DEPRECATION")
 class WebFragment : Fragment() {
     private var _binding: FragmentWebBinding? = null
     private val binding get() = _binding!!
@@ -61,9 +61,11 @@ class WebFragment : Fragment() {
         return view
     }
 
+
     inner class WebClient : WebViewClient() {
 
         // Load the URL
+        @Deprecated("Deprecated in Java")
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             view.loadUrl(url)
             if (url.contains("/download")) {
@@ -170,6 +172,7 @@ class WebFragment : Fragment() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,

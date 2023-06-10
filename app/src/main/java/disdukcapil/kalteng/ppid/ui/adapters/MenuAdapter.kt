@@ -32,8 +32,7 @@ class MenuAdapter(private val itemList: ArrayList<Menu>, private val listener: I
             }
         }
     }
-    fun addAll(it: List<Menu>) = itemList.addAll(it)
 
-    fun removeItemInLastPosition() = itemList.removeAt(itemList.size - 1)
+    fun addAll(it: List<Menu>) = itemList.addAll(it)
 
 }

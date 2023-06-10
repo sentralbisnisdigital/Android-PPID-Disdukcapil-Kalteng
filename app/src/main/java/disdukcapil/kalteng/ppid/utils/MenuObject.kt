@@ -156,10 +156,7 @@ object MenuObject {
 
     val addAppsButton = Menu(
         icon = R.drawable.app,
-        title = "All Apps",
-        url = null,
-        subMenu = null,
-        subtitle = "lorem",
+        title = "Lainnya",
         destination = AllMenuFragment::class.java
     )
 }

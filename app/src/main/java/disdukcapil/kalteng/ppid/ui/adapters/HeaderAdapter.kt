@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import disdukcapil.kalteng.ppid.databinding.ItemHeaderBinding
 
-class HeaderAdapter(private val itemList : ArrayList<String>) : RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
-    class ViewHolder(val binding : ItemHeaderBinding) :RecyclerView.ViewHolder(binding.root)
+class HeaderAdapter(private val itemList: ArrayList<String>) :
+    RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
+    class ViewHolder(val binding: ItemHeaderBinding) : RecyclerView.ViewHolder(binding.root)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,6 +22,7 @@ class HeaderAdapter(private val itemList : ArrayList<String>) : RecyclerView.Ada
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.textTitle.text = itemList[position]
     }
-    fun addAll(it : List<String>) = itemList.addAll(it)
+
+    fun addAll(it: List<String>) = itemList.addAll(it)
 
 }

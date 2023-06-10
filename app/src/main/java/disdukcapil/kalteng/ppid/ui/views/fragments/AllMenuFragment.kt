@@ -1,5 +1,6 @@
 package disdukcapil.kalteng.ppid.ui.views.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,10 +20,7 @@ import disdukcapil.kalteng.ppid.utils.MenuObject
 class AllMenuFragment : BottomSheetDialogFragment(), IClick {
 
     companion object {
-        fun newInstance(): AllMenuFragment {
-            return AllMenuFragment()
-        }
-        const val TAG = "ActionBottomDialog"
+        const val TAG = "AllMenuFragment"
     }
 
     private var _binding: FragmentAllMenuBinding? = null
@@ -32,7 +30,7 @@ class AllMenuFragment : BottomSheetDialogFragment(), IClick {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentAllMenuBinding.inflate(inflater, container, false)
         (requireActivity() as MainActivity).title = "Hello"
@@ -53,13 +51,16 @@ class AllMenuFragment : BottomSheetDialogFragment(), IClick {
         binding.recyclerView.layoutManager = GridLayoutManager(this.context, 3)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun renderList(it: List<Menu>) {
         menuAdapter.addAll(it)
         menuAdapter.notifyDataSetChanged()
     }
 
     private fun setupObserver() {
-        renderList(MenuObject.item())
+        val menuItem = MenuObject.item()
+        menuItem.subList(fromIndex = 0, toIndex = 8).clear()
+        renderList(menuItem)
 
     }
 

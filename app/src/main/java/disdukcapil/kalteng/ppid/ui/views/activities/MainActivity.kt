@@ -13,6 +13,7 @@ import disdukcapil.kalteng.ppid.data.models.Menu
 import disdukcapil.kalteng.ppid.data.models.Tracking
 import disdukcapil.kalteng.ppid.ui.viewmodels.TrackingViewModel
 import disdukcapil.kalteng.ppid.ui.views.fragments.MainFragmentDirections
+import disdukcapil.kalteng.ppid.utils.Config
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -38,11 +39,11 @@ class MainActivity : AppCompatActivity() {
 
         if (data != null) {
             // Insert to database
-            val code : String = data.pathSegments.last()
-            val type : String = data.pathSegments[data.pathSegments.size - 1]
-            trackingViewModel.insert(Tracking(null,trackingCode = code, trackingType = type, createdAt = "2020-05-01 00:00:00"))
+            val trackingNumber : String = data.pathSegments.last()
+            val type : String = Config.setTrackingTitle(trackingNumber)
+            trackingViewModel.insert(Tracking(null,trackingCode = trackingNumber, trackingType = type, createdAt = "2020-05-01 00:00:00"))
             // show into web fragment
-            val menu = Menu(url = data.toString())
+            val menu = Menu(title = Config.setTrackingTitle(trackingNumber), url = data.toString())
             val action = MainFragmentDirections.actionMainFragmentToWebFragment(menu)
             navController!!.navigate(action)
             Animatoo.animateFade(this)

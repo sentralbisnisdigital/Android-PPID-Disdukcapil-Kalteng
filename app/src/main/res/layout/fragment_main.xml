@@ -90,7 +90,8 @@
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:targetApi="p" />
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
@@ -123,7 +124,7 @@
                             android:paddingTop="10dp"
                             android:paddingEnd="24dp"
                             android:paddingBottom="10dp"
-                            android:text="Tracking"
+                            android:text="@string/btn_text_tracking"
                             app:cornerRadius="50dp"
                             app:rippleColor="?attr/colorPrimary"
                             app:strokeColor="@color/white"

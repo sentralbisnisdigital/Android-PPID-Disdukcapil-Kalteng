@@ -1,5 +1,6 @@
 package disdukcapil.kalteng.ppid.ui.views.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,8 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import disdukcapil.kalteng.ppid.R
 import disdukcapil.kalteng.ppid.databinding.ActivitySplashBinding
 
+@SuppressLint("CustomSplashScreen")
+@Suppress("DEPRECATION")
 class SplashActivity : AppCompatActivity() {
     private lateinit var _binding : ActivitySplashBinding
     override fun onCreate(savedInstanceState: Bundle?) {

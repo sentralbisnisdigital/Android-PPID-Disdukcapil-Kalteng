@@ -1,10 +1,8 @@
 package disdukcapil.kalteng.ppid.ui.views.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.text.Editable
 import android.text.InputFilter
-import android.text.TextWatcher
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,15 +10,16 @@ import android.view.inputmethod.EditorInfo
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import disdukcapil.kalteng.ppid.ui.adapters.TrackingAdapter
-import disdukcapil.kalteng.ppid.databinding.FragmentTrackingBinding
-import disdukcapil.kalteng.ppid.databinding.ItemTrackingHistoryBinding
+import disdukcapil.kalteng.ppid.R
 import disdukcapil.kalteng.ppid.data.models.Menu
 import disdukcapil.kalteng.ppid.data.models.Tracking
-import disdukcapil.kalteng.ppid.utils.Env
-import disdukcapil.kalteng.ppid.ui.views.utils.ITracking
+import disdukcapil.kalteng.ppid.databinding.FragmentTrackingBinding
+import disdukcapil.kalteng.ppid.databinding.ItemTrackingHistoryBinding
+import disdukcapil.kalteng.ppid.ui.adapters.TrackingAdapter
 import disdukcapil.kalteng.ppid.ui.viewmodels.TrackingViewModel
-import disdukcapil.kalteng.ppid.ui.views.fragments.MainFragmentDirections
+import disdukcapil.kalteng.ppid.ui.views.utils.ITracking
+import disdukcapil.kalteng.ppid.utils.Config
+import disdukcapil.kalteng.ppid.utils.Env
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -35,7 +34,7 @@ class TrackingFragment : BottomSheetDialogFragment(),
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentTrackingBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -51,7 +50,7 @@ class TrackingFragment : BottomSheetDialogFragment(),
         adapter = TrackingAdapter(arrayListOf(), this)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
-        binding.textInputTracking.filters = arrayOf(InputFilter.AllCaps())
+        binding.textInputTracking.filters = arrayOf(InputFilter.AllCaps(), InputFilter.LengthFilter(11))
     }
 
     private fun setupObserver() {
@@ -60,6 +59,7 @@ class TrackingFragment : BottomSheetDialogFragment(),
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun renderList(it: List<Tracking>) {
         adapter.addAll(it)
         adapter.notifyDataSetChanged()
@@ -84,11 +84,12 @@ class TrackingFragment : BottomSheetDialogFragment(),
                     )
                     trackingViewModel.insert(track)
                     val menu = Menu(
+                        title = Config.setTrackingTitle(tracking),
                         url = Env.url(tracking, "/ppid/tracking/")
                     )
                     showTrackingIntoWebFragment(menu)
                 } else {
-                    it.setError("Silahkan Inputan Terlebih dahulu nomor tracking")
+                    it.error = context?.getString(R.string.text_error_input_tracking)
                     it.isFocusable = true
                 }
                 return@setOnEditorActionListener true
@@ -106,7 +107,10 @@ class TrackingFragment : BottomSheetDialogFragment(),
     }
 
     override fun onClick(item: Tracking, position: Int, view: ItemTrackingHistoryBinding) {
-        val menu = Menu(url = Env.url(item.trackingCode.toString(), "/ppid/tracking/"))
+        val menu = Menu(
+            title = Config.setTrackingTitle(item.trackingCode.toString()),
+            url = Env.url(item.trackingCode.toString(), "/ppid/tracking/")
+        )
         showTrackingIntoWebFragment(menu)
     }
 

@@ -1,5 +1,6 @@
 package disdukcapil.kalteng.ppid.ui.views.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,14 +12,13 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import disdukcapil.kalteng.ppid.ui.adapters.HeaderAdapter
-import disdukcapil.kalteng.ppid.ui.adapters.MenuAdapter
+import disdukcapil.kalteng.ppid.data.models.Menu
 import disdukcapil.kalteng.ppid.databinding.FragmentMainBinding
 import disdukcapil.kalteng.ppid.databinding.ItemMenuBinding
-import disdukcapil.kalteng.ppid.data.models.Menu
+import disdukcapil.kalteng.ppid.ui.adapters.HeaderAdapter
+import disdukcapil.kalteng.ppid.ui.adapters.MenuAdapter
 import disdukcapil.kalteng.ppid.ui.views.utils.IClick
 import disdukcapil.kalteng.ppid.utils.MenuObject
-import disdukcapil.kalteng.ppid.ui.views.fragments.MainFragmentDirections
 
 class MainFragment : Fragment(), IClick {
     private var _binding: FragmentMainBinding? = null
@@ -30,7 +30,7 @@ class MainFragment : Fragment(), IClick {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentMainBinding.inflate(inflater, container, false)
 
@@ -85,6 +85,7 @@ class MainFragment : Fragment(), IClick {
         )
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun renderList(it: List<Menu>) {
         menuAdapter.addAll(it)
         menuAdapter.notifyDataSetChanged()
