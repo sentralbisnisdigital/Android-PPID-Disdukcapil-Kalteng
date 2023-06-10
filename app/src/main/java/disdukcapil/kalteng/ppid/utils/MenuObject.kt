@@ -26,7 +26,7 @@ object MenuObject {
             Menu(
                 icon = R.drawable.department,
                 title = "Profil PPID",
-                url = Env.url("/struktur-organisasi"),
+                url = Env.url(""),
                 subtitle = "lorem",
                 subMenu = null,
                 destination = null
