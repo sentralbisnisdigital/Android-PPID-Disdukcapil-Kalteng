@@ -1,21 +1,20 @@
 package disdukcapil.kalteng.ppid.ui.views.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import disdukcapil.kalteng.ppid.ui.views.utils.IClick
-import disdukcapil.kalteng.ppid.ui.views.activities.MainActivity
 import disdukcapil.kalteng.ppid.data.models.Menu
-import disdukcapil.kalteng.ppid.ui.adapters.MenuAdapter
 import disdukcapil.kalteng.ppid.databinding.FragmentAllMenuBinding
 import disdukcapil.kalteng.ppid.databinding.ItemMenuBinding
+import disdukcapil.kalteng.ppid.ui.adapters.MenuAdapter
+import disdukcapil.kalteng.ppid.ui.views.activities.MainActivity
+import disdukcapil.kalteng.ppid.ui.views.utils.IClick
 import disdukcapil.kalteng.ppid.utils.MenuObject
-import disdukcapil.kalteng.ppid.ui.views.fragments.MainFragmentDirections
 
 class AllMenuFragment : BottomSheetDialogFragment(), IClick {
 
@@ -65,9 +64,18 @@ class AllMenuFragment : BottomSheetDialogFragment(), IClick {
     }
 
     override fun onClick(menu: Menu, position: Int, view: ItemMenuBinding) {
-        dismiss() // close this fragment
-        val navController = findNavController()
-        val action = MainFragmentDirections.actionMainFragmentToWebFragment(menu)
-        navController.navigate(action)
+        dismiss()
+        if (menu.url == null) {
+            val submissionFragment = SubmissionFragment.newInstance(menu.subMenu, menu.title)
+            submissionFragment.show(
+                parentFragmentManager,
+                SubmissionFragment.TAG
+            )
+        } else {
+            val navController = findNavController()
+            val action = MainFragmentDirections.actionMainFragmentToWebFragment(menu)
+            navController.navigate(action)
+            Animatoo.animateFade(this.requireContext())
+        }
     }
 }

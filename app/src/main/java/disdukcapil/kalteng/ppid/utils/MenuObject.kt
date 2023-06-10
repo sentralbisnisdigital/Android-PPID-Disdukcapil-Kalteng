@@ -24,6 +24,13 @@ object MenuObject {
                 destination = null
             ),
             Menu(
+                icon = R.drawable.department,
+                title = "Profil PPID",
+                url = Env.url("/struktur-organisasi"),
+                subtitle = "lorem",
+                subMenu = null,
+                destination = null
+            ),Menu(
                 icon = R.drawable.organization_chart,
                 title = "Struktur Organisasi",
                 url = Env.url("/struktur-organisasi"),
@@ -46,6 +53,13 @@ object MenuObject {
                 subMenu = null,
                 subtitle = "lorem",
                 destination = null
+            ),
+            Menu(
+                icon = R.drawable.indonesian_rupiah,
+                title = "Tarif / Biaya",
+                url = Env.url("/biaya"),
+                subtitle = "lorem",
+                destination = null,
             ),
             Menu(
                 icon = R.drawable.sop,
@@ -93,14 +107,6 @@ object MenuObject {
                     penyelesaianSengketa = Env.url("/penyelesaian-sengketa", "/ppid/formulir-layanan"),
                     pengaduan = Env.url("/pengaduan", "/ppid/formulir-layanan")
                 )
-            ),
-
-            Menu(
-                icon = R.drawable.indonesian_rupiah,
-                title = "Tarif / Biaya",
-                url = Env.url("/biaya"),
-                subtitle = "lorem",
-                destination = null,
             ),
         )
     }
