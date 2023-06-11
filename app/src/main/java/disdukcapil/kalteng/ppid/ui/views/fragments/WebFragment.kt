@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import disdukcapil.kalteng.ppid.data.models.Menu
 import disdukcapil.kalteng.ppid.databinding.FragmentWebBinding
+import disdukcapil.kalteng.ppid.utils.Config
 
 
 @Suppress("DEPRECATION")
@@ -50,10 +51,10 @@ class WebFragment : Fragment() {
             binding.webView.settings.javaScriptEnabled = true
             binding.webView.webViewClient = WebClient()
             binding.webView.webChromeClient = ChromeClient()
-            binding.webView.loadUrl(it)
+            binding.webView.loadUrl(it, Config.webHeaders())
             binding.btnReload.setOnClickListener { _ ->
                 binding.animationView.visibility = View.VISIBLE
-                binding.webView.loadUrl(it)
+                binding.webView.loadUrl(it, Config.webHeaders())
                 isError = false
             }
         }
