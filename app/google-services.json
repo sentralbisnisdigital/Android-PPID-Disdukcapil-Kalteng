@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1094480733534",
+    "project_id": "ppid-disdukcapil-kalteng",
+    "storage_bucket": "ppid-disdukcapil-kalteng.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094480733534:android:320b932ac30add20f31bcf",
+        "android_client_info": {
+          "package_name": "disdukcapil.kalteng.ppid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094480733534-066dhuc2a6ald29ur97r1sj27atoe512.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7LFNNc798X9J5cxQOu3zRzjbjlTJkzD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094480733534-066dhuc2a6ald29ur97r1sj27atoe512.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
