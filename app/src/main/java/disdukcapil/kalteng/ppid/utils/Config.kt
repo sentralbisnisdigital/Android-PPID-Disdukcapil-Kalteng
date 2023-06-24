@@ -10,5 +10,6 @@ object Config {
         headers["Token"] = "RLB9KKFJTi0vQU54G9mTY6L6ILpJGAxaacGITSx1QdoYMVqg5xhA4Skaaf53G"
         return headers
     }
+    const val USER_AGENT = "RLB9KKFJTi0vQU54G9mTY6L6ILpJGAxaacGITSx1QdoYMVqg5xhA4Skaaf53G"
 
 }
