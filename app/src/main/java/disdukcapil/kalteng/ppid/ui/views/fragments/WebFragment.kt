@@ -32,7 +32,7 @@ class WebFragment : Fragment() {
     private var isError = false
     private var filePath: ValueCallback<Array<Uri>>? = null
 
-    companion object{
+    companion object {
         private const val REQUEST_PERMISSION = 101
     }
 
@@ -49,6 +49,7 @@ class WebFragment : Fragment() {
         (activity as AppCompatActivity?)!!.supportActionBar!!.title = menu?.title
         menu?.url?.let {
             binding.webView.settings.javaScriptEnabled = true
+            binding.webView.settings.userAgentString = Config.USER_AGENT
             binding.webView.webViewClient = WebClient()
             binding.webView.webChromeClient = ChromeClient()
             binding.webView.loadUrl(it, Config.webHeaders())
@@ -79,8 +80,8 @@ class WebFragment : Fragment() {
         // ProgressBar will disappear once page is loaded
         override fun onPageFinished(view: WebView, url: String) {
             super.onPageFinished(view, url)
-            if(!isError){
-                if(view.progress == 100){
+            if (!isError) {
+                if (view.progress == 100) {
                     binding.layoutError.visibility = View.GONE
                     binding.webView.visibility = View.VISIBLE
                     binding.animationView.visibility = View.GONE
