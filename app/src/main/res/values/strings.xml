@@ -5,9 +5,9 @@
     <string name="title_agency">Dinas Kependudukan dan Pencatatan Sipil Provinsi Kalimantan Tengah</string>
     <string name="title_welcome">Selamat Datang di Layanan E-PPID \nDinas Kependudukan dan Pencatatan Sipil Provinsi Kalimantan Tengah</string>
     <string name="title_instansi">Dinas Kependudukan dan Pencatatan Sipil\nProvinsi Kalimantan Tengah</string>
-    <string name="scheme">http</string>
-    <string name="host">103.123.25.38:8000</string>
-    <string name="app_link">http://103.123.25.38:8000/ppid/tracking/{myarg}</string>
+    <string name="scheme">https</string>
+    <string name="host">disdukcapil.kalteng.go.id:8000</string>
+    <string name="app_link">https://disdukcapil.kalteng.go.id:8000/ppid/tracking/{myarg}</string>
     <string name="title_app">e-PPID</string>
     <string name="btn_text_reload">Muat Ulang</string>
     <string name="btn_select_service">Pilih Layanan</string>
