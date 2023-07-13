@@ -98,15 +98,9 @@ object MenuObject {
             Menu(
                 icon = R.drawable.contact_form,
                 title = "Formulir Layanan",
-                url = null,
+                url = Env.url("/formulir-layanan"),
                 subtitle = "lorem",
-                destination = null,
-                subMenu = subMenu(
-                    permintaanInformasi = Env.url("/permintaan-informasi", "/ppid/formulir-layanan"),
-                    keberatan = Env.url("/keberatan", "/ppid/formulir-layanan"),
-                    penyelesaianSengketa = Env.url("/penyelesaian-sengketa", "/ppid/formulir-layanan"),
-                    pengaduan = Env.url("/pengaduan", "/ppid/formulir-layanan")
-                )
+                destination = null
             ),
         )
     }
