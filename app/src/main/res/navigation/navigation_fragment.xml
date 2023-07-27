@@ -22,6 +22,6 @@
             android:name="menu"
             app:nullable="true"
             app:argType="disdukcapil.kalteng.ppid.data.models.Menu" />
-        <deepLink app:uri="@string/app_link" />
+<!--        <deepLink app:uri="https://disdukcapil.kalteng.go.id:8000/ppid/tracking/{myarg}" />-->
     </fragment>
 </navigation>
