@@ -41,8 +41,10 @@
                 <!-- on below line we are specifying the host name and
                     the scheme type from which we will be calling our app -->
                 <data
-                    android:host="@string/host"
-                    android:scheme="@string/scheme" />
+                    android:pathPrefix="/ppid/tracking/"
+                    android:port="8000"
+                    android:host="disdukcapil.kalteng.go.id"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
     </application>
