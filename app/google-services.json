@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "1094480733534",
-    "project_id": "ppid-disdukcapil-kalteng",
-    "storage_bucket": "ppid-disdukcapil-kalteng.appspot.com"
+    "project_number": "906079085201",
+    "project_id": "ppid-disdukcapil-kalteng-1fdc6",
+    "storage_bucket": "ppid-disdukcapil-kalteng-1fdc6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1094480733534:android:320b932ac30add20f31bcf",
+        "mobilesdk_app_id": "1:906079085201:android:4ac0c368a049e611641530",
         "android_client_info": {
-          "package_name": "disdukcapil.kalteng.ppid"
+          "package_name": "id.mazafathi.ppidcapilkalteng"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "1094480733534-066dhuc2a6ald29ur97r1sj27atoe512.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD7LFNNc798X9J5cxQOu3zRzjbjlTJkzD0"
+          "current_key": "AIzaSyBXJhqISYmLmewrlwdWkkwVWpk7Weo7jWg"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1094480733534-066dhuc2a6ald29ur97r1sj27atoe512.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
